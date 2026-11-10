@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>CountLab Paris | A Probability Journey</title><script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+<style>
+:root{--bg:#f5f7fb;--ink:#19233b;--muted:#62708a;--accent:#4c56cf;--line:#e1e6f1;--white:#fff;--good:#16825c}
+*{box-sizing:border-box}body{margin:0;font:16px/1.55 system-ui,Segoe UI,Arial;background:var(--bg);color:var(--ink)}
+header{background:#171d41;color:white;padding:20px max(20px,calc((100vw - 1100px)/2));display:flex;align-items:center;justify-content:space-between;gap:15px;flex-wrap:wrap}
+.logo{font-weight:850;font-size:23px;letter-spacing:-1px}.logo span{color:#aeb7ff}
+nav{display:flex;gap:8px;flex-wrap:wrap}nav button{background:transparent;color:#e7eaff;border:1px solid #515980}
+main{max-width:1100px;margin:auto;padding:28px 18px 65px}.hero{background:linear-gradient(120deg,#292d7b,#575fd4);color:white;padding:38px;border-radius:22px;margin-bottom:24px}
+.hero h1{font-size:clamp(28px,5vw,44px);line-height:1.12;margin:0 0 12px}.hero p{max-width:690px;color:#e3e7ff}
+section{display:none}section.active{display:block}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px}
+.card{background:white;border:1px solid var(--line);border-radius:18px;padding:24px;margin-bottom:16px;box-shadow:0 4px 22px #19233b08}
+h2{font-size:27px;margin:0 0 12px}h3{margin:0 0 10px;font-size:19px}.sub{color:var(--muted);margin-top:0}
+.formula{font-size:22px;font-weight:750;color:#353da7;background:#f0f1ff;padding:12px 16px;border-radius:12px;margin:12px 0}
+button{border:0;background:var(--accent);color:white;padding:11px 17px;border-radius:10px;font:inherit;font-weight:650;cursor:pointer}button:hover{filter:brightness(.94)}button:disabled{opacity:.5;cursor:not-allowed}.secondary{background:#eef0ff;color:#333c9b}.outline{background:white;color:var(--ink);border:1px solid var(--line)}
+input,textarea,select{font:inherit;border:1px solid #cbd2e2;border-radius:10px;padding:12px;width:100%;background:white;color:var(--ink)}
+textarea{min-height:125px;resize:vertical}.choice{display:block;padding:13px 15px;border:1px solid var(--line);border-radius:11px;margin:9px 0;cursor:pointer}
+.choice:has(input:checked){border-color:#5159cb;background:#f1f2ff}.choice input{width:auto;margin-right:10px}
+.tag{font-size:12px;letter-spacing:.07em;text-transform:uppercase;color:#5159b8;font-weight:800}.hidden{display:none!important}.small{font-size:13px;color:var(--muted)}
+.progress{height:8px;border-radius:20px;background:#e7e9f4;overflow:hidden;margin:12px 0 20px}.bar{height:100%;background:#5862d4;transition:width .2s}
+.review{border-left:4px solid #8991eb;background:#f7f8ff;padding:13px 16px;border-radius:8px;margin:12px 0}
+.good{color:var(--good)}.bad{color:#b13f4c}.pill{display:inline-block;background:#edf0ff;border-radius:20px;padding:5px 10px;font-size:12px;font-weight:700;margin:3px}
+#imagePreview{max-width:100%;max-height:250px;border-radius:12px;margin:10px 0}footer{text-align:center;color:var(--muted);font-size:13px;padding:24px}
+@media(max-width:600px){.hero{padding:25px}.card{padding:18px}header{padding:18px}}
+ 
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,600;0,700;1,600&display=swap');
+:root{--bg:#f7f2e9;--ink:#273c46;--muted:#68757a;--accent:#2b676a;--line:#e4d9c6;--white:#fffdf8;--good:#287658}
+body{font-family:'DM Sans',system-ui,sans-serif;background:var(--bg);color:var(--ink)}
+h1,h2,h3{font-family:'Playfair Display',Georgia,serif}header{background:#153e43;border-bottom:3px solid #cda66d}header button{border-color:#638487;color:#f4eee4}
+.logo span{color:#e8c894}.card{background:#fffdf8;border-color:#e9ddc9;box-shadow:0 8px 28px #2b30230b}
+button{background:#27696a}button.secondary{background:#e6efe9;color:#205e5d}.tag{color:#92693e}.formula{background:#f5eddd;color:#24585a}
+.hero.paris-hero{background:linear-gradient(125deg,#173e44,#2d6468);min-height:380px;display:grid;grid-template-columns:1.2fr 1fr;align-items:center;overflow:hidden;padding:40px 48px;border:1px solid #b89663}
+.paris-hero h1{font-size:clamp(40px,6vw,75px);line-height:1.04;font-weight:700;letter-spacing:-1px;margin:16px 0}.paris-hero h1 em{color:#eacb93}.paris-hero p{font-size:16px;max-width:510px}.eyebrow{font-size:11px;font-weight:800;letter-spacing:2.5px;color:#f1d7a4}.eyebrow.dark{color:#a57c48}.hero-foot{font-size:12px;color:#c3d8d5;max-width:510px;margin-top:25px}.gold-btn{background:#edc789;color:#173e44}.hero-ghost{background:transparent;border:1px solid #aac5bf;color:white;margin-left:6px}.hero-art{max-width:400px}
+.section-head{margin:15px 0 22px}.section-head h2{font-size:clamp(27px,4vw,40px);margin:6px 0}
+.paris-map{position:relative;padding:0;overflow:hidden;border:2px solid #d8bd8e;min-height:500px}
+.map-title{position:absolute;z-index:2;left:22px;top:12px;font-family:Georgia,serif;letter-spacing:3px;font-size:23px;color:#385d5e}.map-title span{font:11px 'DM Sans',sans-serif;letter-spacing:0;color:#758b88}
+.map-art{width:100%;display:block}.map-pins{position:absolute;inset:0}
+.pin{position:absolute;background:#fffdf7;color:#245659;border:2px solid #b48b53;box-shadow:0 4px 10px #3b42301f;border-radius:20px;font-size:clamp(10px,1.3vw,14px);padding:6px 9px;white-space:nowrap}
+.pin span{display:inline-block;background:#245659;color:white;border-radius:50%;padding:2px 6px;margin-right:3px}
+.pin:hover,.pin.selected{background:#245659;color:white}.pin.selected span{background:#d7b476;color:#1c4042}
+.pin1{left:7%;top:27%}.pin2{left:42%;top:34%}.pin3{left:73%;top:31%}.pin4{left:17%;top:77%}.pin5{left:70%;top:12%}.pin6{left:55%;top:73%}
+.stop-detail{border-left:6px solid #c7a06a;display:grid;grid-template-columns:1fr 1fr;gap:26px}.stop-detail h2{font-size:30px}.stop-detail .story{font-size:17px}.stop-detail .worked{background:#f6f0e6;border-radius:14px;padding:20px}.stop-detail .worked .formula{font-size:20px}
+.history-note{background:#efe5d4}.pigeon{position:fixed;bottom:18px;right:20px;z-index:20;display:flex;align-items:end;gap:7px;pointer-events:none}.pigeon-figure{filter:drop-shadow(0 5px 5px #173d4333)}.pigeon-bubble{max-width:240px;background:#fffdf7;border:2px solid #c9aa7a;border-radius:15px;padding:12px;box-shadow:0 7px 25px #19383a22;font-size:12px}.pigeon-bubble p{margin:4px 0 0}.pigeon-bubble b{color:#266669}
+.review{border-left-color:#b99965;background:#f7f1e8}.choice:has(input:checked){border-color:#398180;background:#edf6f1}
+@media(max-width:750px){.hero.paris-hero{grid-template-columns:1fr;padding:27px}.hero-art{display:none}.paris-map{min-height:300px}.pin{font-size:9px;padding:4px}.pin span{padding:1px 4px}.stop-detail{grid-template-columns:1fr}.pigeon{bottom:6px;right:6px}.pigeon-figure svg{width:45px}.pigeon-bubble{max-width:175px;padding:8px;font-size:10px}.map-title{font-size:16px}.map-title span{display:none}}
+
+/* Opening story: fictional carrier-pigeon framing of a real correspondence */
+.story-overlay{position:fixed;inset:0;z-index:100;background:radial-gradient(circle at 50% 30%,#355e64,#102f38 75%);color:#f9eed9;display:flex;align-items:center;justify-content:center;padding:20px;overflow:hidden}
+.story-overlay[hidden]{display:none!important}.story-panel{width:min(760px,100%);text-align:center;position:relative;z-index:2}.story-kicker{color:#e9c78e;letter-spacing:3px;font-size:12px;font-weight:800}.story-panel h2{font:700 clamp(32px,6vw,57px)/1.13 Georgia,serif;margin:12px 0 20px}.story-panel h2 em{color:#f0cc91}.story-letter{background:#f3e4c5;color:#34403a;border:2px solid #bd965f;box-shadow:0 18px 40px #091b2580;padding:22px 25px;border-radius:5px;max-width:520px;margin:0 auto;transform:rotate(-2deg);position:relative;min-height:180px}.story-letter:before{content:'✦';position:absolute;right:17px;top:10px;color:#a97c4b}.story-letter p{font:italic 19px/1.5 Georgia,serif}.story-letter small{display:block;font:12px/1.5 system-ui,sans-serif;color:#6c6457}.story-actions{display:flex;justify-content:center;gap:10px;flex-wrap:wrap;margin:23px 0}.story-actions button{background:#e6bd7c;color:#173b40}.story-actions .skip{background:transparent;color:#fff;border:1px solid #adc3bf}.story-note{color:#d4dfdc;font-size:12px;max-width:590px;margin:0 auto}.story-bird{position:absolute;top:12%;left:-200px;width:170px;filter:drop-shadow(0 12px 7px #091e2970);animation:birdfly 3.2s ease-in-out forwards;pointer-events:none}.story-bird svg{width:100%}.story-bird .wing{transform-origin:90px 75px;animation:wingflap .3s ease-in-out infinite alternate}.story-overlay:not(.playing) .story-bird{animation-play-state:paused}.story-overlay:not(.playing) .wing{animation-play-state:paused}.story-overlay.playing .story-letter{animation:letterIn 1s 2.3s both}.story-overlay.playing .story-panel h2{animation:fadeIn 1.2s .1s both}@keyframes birdfly{0%{left:-200px;top:65%;transform:scale(.6) rotate(-12deg)}55%{left:45%;top:8%;transform:scale(1) rotate(6deg)}100%{left:calc(50% - 80px);top:3%;transform:scale(.85) rotate(0)}}@keyframes wingflap{from{transform:rotate(-22deg)}to{transform:rotate(22deg)}}@keyframes letterIn{from{opacity:0;transform:translateY(-40px) rotate(8deg) scale(.8)}to{opacity:1;transform:translateY(0) rotate(-2deg) scale(1)}}@keyframes fadeIn{from{opacity:0}to{opacity:1}}@media(prefers-reduced-motion:reduce){.story-bird,.story-bird .wing,.story-overlay.playing .story-letter,.story-overlay.playing .story-panel h2{animation:none!important}.story-bird{display:none}}@media(max-width:600px){.story-bird{width:100px}.story-letter{padding:16px}.story-letter p{font-size:16px}}
+
+/* Modern Paris cinematic edition */
+:root{--bg:#f5f8fc;--ink:#203344;--accent:#2c7884;--line:#e1eaf0;--white:#fff}
+body{background:#f5f8fc;color:#203344;font-family:system-ui,'Segoe UI',sans-serif}
+h1,h2,h3{font-family:system-ui,'Segoe UI',sans-serif;letter-spacing:-.04em}
+header{background:#163c56}header button{border-color:#50778b}
+.card{background:#fff;border:1px solid #e3eaf1;border-radius:22px;box-shadow:0 12px 35px #193d5210}
+button{background:#277f8c;border-radius:12px}button.secondary{background:#e6f4f6;color:#176575}
+.hero.paris-hero{background:linear-gradient(120deg,#194b66,#348b97);border:0;border-radius:24px}
+.paris-hero h1 em{color:#b9edf2}.gold-btn{background:#c8f3ec;color:#175064}
+.paris-map{border:1px solid #d9e8ec;background:#e8f4f5;border-radius:24px}
+.pin{border:2px solid #9acbd2;border-radius:14px;box-shadow:0 7px 20px #2a5a6420}.pin span{background:#277d8c}.pin:hover,.pin.selected{background:#277d8c}
+.stop-detail{border-left:6px solid #65b5be}.worked{background:#edf8f8;border-radius:16px}.formula,.general-formula{background:#eaf7f8;color:#135b68;border-radius:12px;padding:14px;margin:10px 0;font-size:clamp(18px,2.4vw,25px);font-weight:700}
+.story-overlay{background:radial-gradient(circle at 40% 20%,#458c9d,#123b55 80%)}.story-letter{border:0;background:#f9fcff;color:#1d4a5d;border-radius:22px;transform:none;box-shadow:0 18px 60px #0b273455}.story-letter p{font-family:system-ui,sans-serif;font-style:normal}
+.story-overlay.playing .story-letter{animation:modernLetter 1s 2s both}.story-actions button{background:#c8f3ec;color:#154d62}
+.founders{display:flex;justify-content:center;align-items:center;gap:16px;margin:10px auto 16px;max-width:540px}.founder{display:grid;gap:4px;font-size:13px}.founder-face{display:grid;place-items:center;margin:auto;width:72px;height:72px;background:linear-gradient(135deg,#b9e5ed,#f6fbff);border:3px solid #d1f1f5;border-radius:50%;color:#265d6e;font-size:33px}.founder-connection{font-size:20px;white-space:nowrap}.founder-connection span{display:inline-block;animation:flyLetter 2.5s ease-in-out infinite alternate}
+.location-overlay[hidden]{display:none!important}.location-overlay{position:fixed;inset:0;z-index:105;background:#0c354ad9;display:flex;justify-content:center;align-items:center;padding:15px;overflow:auto;backdrop-filter:blur(9px)}
+.location-panel{width:min(840px,100%);max-height:94vh;overflow-y:auto;position:relative;background:white;border-radius:25px;padding:24px;box-shadow:0 25px 90px #09273588}
+.location-panel h2{margin:5px 0 16px;font-size:clamp(25px,4vw,38px)}.location-close{position:absolute;right:12px;top:12px;background:#edf5f7;color:#285568}
+.stage-art{height:215px;border-radius:20px;position:relative;overflow:hidden;background:linear-gradient(#bfe6f0 0 65%,#e7f4ed 65%)}.stage-art.museum{background:linear-gradient(#e5ddf4 0 65%,#f2e9f9 65%)}.stage-art.cafe{background:linear-gradient(#f7ddc3 0 65%,#f5e8d6 65%)}.stage-art.art{background:linear-gradient(#f7d9db 0 65%,#f8e7e3 65%)}
+.stage-glow{position:absolute;inset:-30px;background:radial-gradient(circle at 65% 45%,#fff9,transparent 52%)}.stage-landmark{position:absolute;left:45%;top:15px;font-size:125px;filter:drop-shadow(0 10px 8px #21475d22);animation:riseScene .7s both}.stage-actor{position:absolute;left:20%;bottom:10px;animation:walkScene 1.2s both}.actor-face{height:45px;width:45px;background:#eac4a2;border-radius:50%;font-size:27px;text-align:center;color:#5e4e4b}.actor-body{width:60px;height:75px;border-radius:25px 25px 8px 8px;background:#277f8c;margin-left:-8px}.stage-bird{position:absolute;right:12%;top:35px;font-size:48px;animation:flyLetter 2s infinite alternate}.stage-label{position:absolute;right:12px;bottom:12px;background:#fff9;padding:7px 12px;border-radius:10px;font-weight:800;color:#326273}
+.speech-row{display:flex;gap:10px;align-items:center;margin:14px 0;background:#f2f8fc;padding:12px 16px;border-radius:16px}.speech-row p{margin:0}.speech-bird{font-size:35px}.lesson-step{animation:fadeIn .5s both}.lesson-kicker{font-size:11px;font-weight:850;letter-spacing:2px;color:#257d8b;margin-top:12px}.lesson-answer{background:#dcf5e9;border-radius:12px;padding:13px;color:#146b4d;font-weight:850}.scene-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:14px}.sound-control{background:#2b617a;color:#fff}
+.result-card{background:#fff;border:1px solid #dce8ed;border-radius:18px;padding:20px;margin:15px 0;box-shadow:0 8px 25px #2c5a6d0d}.result-card.right{border-left:5px solid #45b98d}.result-card.wrong{border-left:5px solid #e5a77c}.result-top{display:flex;justify-content:space-between;gap:12px;font-size:11px;letter-spacing:1px;font-weight:850;color:#407786}.result-card h3{font-size:18px;letter-spacing:0}.result-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}.result-grid>div{background:#f1f7f9;border-radius:12px;padding:10px}.result-grid small{display:block;color:#66828b}.result-grid strong{font-size:19px}.result-explanation{margin-top:14px;background:#eaf7f8;padding:13px;border-radius:12px}.result-explanation p{margin:7px 0 0}
+@keyframes riseScene{from{opacity:0;transform:translateY(25px) scale(.9)}to{opacity:1;transform:translateY(0) scale(1)}}@keyframes walkScene{from{opacity:0;transform:translateX(-80px)}to{opacity:1;transform:translateX(0)}}@keyframes flyLetter{from{transform:translate(-12px,-8px) rotate(-10deg)}to{transform:translate(13px,7px) rotate(7deg)}}@keyframes modernLetter{from{opacity:0;transform:translateY(30px) scale(.95)}to{opacity:1;transform:none}}
+@media(max-width:600px){.location-panel{padding:15px}.stage-art{height:180px}.stage-landmark{font-size:95px}.founder-face{width:52px;height:52px}.founder-connection{font-size:14px}.result-grid{grid-template-columns:1fr}.pigeon{bottom:8px}}
+@media(prefers-reduced-motion:reduce){.stage-actor,.stage-landmark,.stage-bird,.founder-connection span{animation:none!important}}
+
+/* Cinematic Edition: actual illustrated backgrounds rather than emoji stand-ins */
+:root{--bg:#f5f8fb;--ink:#1b2b48;--accent:#365eae;--line:#e0e8f1;--white:#fff;--muted:#6a7890}
+body{background:linear-gradient(180deg,#f0f5fb,#fffaf4 85%);color:#1d3152}
+header{background:#14294d;border-bottom:2px solid #6c8fc5}header button{color:#f4f7ff}
+.hero.paris-hero{background:linear-gradient(110deg,#122c53,#345d92);border:0;min-height:370px}
+.paris-hero h1 em{color:#f7d9a2}.cinematic-art{height:320px;overflow:hidden;border-radius:20px;box-shadow:0 15px 38px #09142c88}
+.cinematic-art img{height:100%;width:100%;object-fit:cover;object-position:58% center}
+.story-overlay{background:linear-gradient(90deg,#102a4bb8,#172c51c7),url('assets/intro-paris.jpg') center/cover no-repeat}
+.story-panel{background:#10274ab3;border:1px solid #ffffff33;border-radius:25px;padding:22px;backdrop-filter:blur(10px)}
+.story-letter{background:#f8fbff;border:0;border-radius:16px;box-shadow:0 10px 40px #101e3d55}
+.founder-face{width:76px!important;height:76px!important;object-fit:cover;border-radius:50%;border:3px solid #f3d3a0;box-shadow:0 5px 18px #0005}
+.founder-connection span{font-size:22px}
+.paris-map{background:url('assets/paris-map.jpg') center/cover no-repeat;min-height:480px;border:0;border-radius:23px;box-shadow:0 12px 35px #18355b25}
+.paris-map:before{content:'';position:absolute;inset:0;background:linear-gradient(180deg,#09274822,#082b4b12);pointer-events:none}
+.paris-map .map-art{visibility:hidden;height:460px}.map-title{color:#fff;text-shadow:0 2px 8px #0b284b}.map-title span{color:#f1f6ff}
+.pin{background:#fefdfaf2;border:2px solid #d2b67c;color:#1b3765;box-shadow:0 5px 17px #071c3d80;transition:transform .2s,background .2s}.pin:hover{transform:translateY(-5px) scale(1.04)}.pin span{background:#294d88}
+.location-overlay{background:#102746ee;backdrop-filter:blur(7px)}.location-overlay.arrive:before,.location-overlay.arrive:after{content:'';position:fixed;width:80vw;height:80vh;background:#ffffffaa;border-radius:50%;filter:blur(70px);pointer-events:none;z-index:5;animation:cloud-wipe 1.1s both}.location-overlay.arrive:before{left:-30%;top:-20%}.location-overlay.arrive:after{right:-30%;bottom:-30%;animation-delay:.14s}
+@keyframes cloud-wipe{0%{opacity:1;transform:translateX(0)}100%{opacity:0;transform:translateX(120px)}}
+.location-panel{background:#f9fbff;border:0;border-radius:24px;box-shadow:0 20px 70px #06142d99;max-width:880px}
+.cinematic-scene{height:300px;position:relative;overflow:hidden;border-radius:18px;background:#b8cde4}
+.cinematic-scene>img{width:100%;height:100%;object-fit:cover;object-position:center 55%;animation:cinematic-pan 12s ease-in-out infinite alternate}
+@keyframes cinematic-pan{from{transform:scale(1.04) translateX(-1%)}to{transform:scale(1.14) translateX(1%)}}
+.scene-veil{position:absolute;inset:0;background:linear-gradient(180deg,transparent 55%,#10223b88)}
+.scene-character{position:absolute;bottom:0;left:3%;width:100px;height:130px;overflow:hidden;border-radius:50% 50% 0 0;animation:bird-bob 2.5s ease-in-out infinite alternate}
+.scene-character img{width:100%;height:100%;object-fit:cover;object-position:20% center}
+@keyframes bird-bob{from{transform:translateY(3px)}to{transform:translateY(-7px)}}
+.scene-place{position:absolute;bottom:16px;right:20px;color:white;font:700 22px Georgia;text-shadow:0 2px 8px #000}
+.speech-bird{width:65px;height:65px;border-radius:50%;overflow:hidden;flex-shrink:0;background:#e8eef9}.speech-bird img{width:100%;height:100%;object-fit:cover}
+.pigeon-figure{width:76px;height:80px;background:url('assets/pierre.jpg') 10% 65%/cover no-repeat;border-radius:45%;border:2px solid #f8dca4;box-shadow:0 6px 15px #182c4855}.pigeon-figure svg{display:none}
+.math-diagram{display:flex;align-items:center;justify-content:center;gap:14px;background:#eff4fc;border-radius:15px;padding:15px;min-height:94px;flex-wrap:wrap}.math-diagram small{width:100%;font-size:12px;color:#5e7194;text-align:center}.coin-face{width:43px;height:43px;border:3px solid #d7aa54;background:#f7e0a6;color:#795323;border-radius:50%;display:grid;place-items:center;font-weight:800;font-size:21px;box-shadow:0 4px 0 #b58c44}.coin-face.tails{background:#dce7f6;border-color:#9ab4d9;color:#315584}.marble{width:32px;height:32px;border-radius:50%;box-shadow:inset -6px -6px 8px #0003,0 3px 6px #0002}.marble.red{background:#e76e75}.marble.blue{background:#528ed7}.person-dot{height:47px;width:27px;background:linear-gradient(#dfb99c 0 40%,#5682c5 40%);border-radius:20px 20px 9px 9px}.diagram-num{background:#dce7fb;color:#234f93;padding:7px 20px;border-radius:10px;font-weight:800;font-size:26px}.diagram-times{font-size:24px;color:#5e7494}
+.result-card{background:#fff;border:1px solid #dae4f0;box-shadow:0 6px 23px #123b7510}
+@media(max-width:680px){.cinematic-scene{height:205px}.paris-map{min-height:370px}.paris-map .map-art{height:370px}.founder-face{height:55px!important;width:55px!important}.story-panel{padding:12px}.cinematic-art{display:none}.pin{font-size:10px}}
+</style></head><body>
+<div id="storyOverlay" class="story-overlay" role="dialog" aria-modal="true" aria-labelledby="storyTitle">
+<div class="story-bird" aria-hidden="true"><svg viewBox="0 0 200 170"><ellipse cx="100" cy="100" rx="48" ry="36" fill="#d8e0e6"/><path class="wing" d="M80 98Q45 4 142 37Q118 75 80 98" fill="#9fb0c1"/><circle cx="145" cy="77" r="29" fill="#e4e9ef"/><circle cx="153" cy="70" r="4" fill="#233a49"/><path d="M169 82l26 7-23 8" fill="#d5a25b"/><path d="M63 103L12 74l28 49" fill="#b3c2ce"/><path d="M99 132l-4 17m18-16l5 16" stroke="#ba8255" stroke-width="4"/><path d="M72 123l37 10 9-16-36-8z" fill="#e6cda0" stroke="#ae895c" stroke-width="2"/></svg></div>
+<div class="story-panel"><div class="story-kicker">FRANCE · 1654</div><h2 id="storyTitle">A letter that changed<br><em>the mathematics of chance.</em></h2>
+<div class="founders"><div class="founder"><img class="founder-face" src="assets/pascal.jpg" alt="Illustrated Blaise Pascal"><b>Blaise Pascal</b></div><div class="founder-connection">✉️ <span>🕊️</span> ✉️</div><div class="founder"><img class="founder-face" src="assets/fermat.jpg" alt="Illustrated Pierre de Fermat"><b>Pierre de Fermat</b></div></div><div class="story-letter"><div class="story-kicker" style="color:#9a744b">A MESSAGE FROM THE PAST</div><p>“How can we reason about chance?”</p><p style="font-size:15px;font-style:normal">Blaise Pascal and Pierre de Fermat exchanged letters about mathematical problems of chance. Their ideas helped shape modern probability theory.</p><small>Our messenger pigeon Pierre is a fictional guide — not a documented historical courier.</small></div>
+<div class="story-actions"><button id="storyEnter" onclick="closeStory()">Open the letter & explore Paris →</button><button class="skip" onclick="closeStory()">Skip introduction</button><button class="skip" id="soundToggle" onclick="toggleStorySound()" aria-pressed="false">♪ Sound: off</button></div>
+<p class="story-note">A short dramatized introduction inspired by real historical correspondence. Sound is optional and starts only when you turn it on.</p></div></div>
+<div id="locationOverlay" class="location-overlay" hidden role="dialog" aria-modal="true" aria-labelledby="sceneHeading"><div class="location-panel"><button class="location-close" onclick="closeLocation()" aria-label="Close">✕</button><div class="eyebrow dark">YOUR PARIS STORY</div><h2 id="sceneHeading"></h2><div id="sceneArt"></div><div class="speech-row"><div class="speech-bird"><img src="assets/pierre.jpg" alt="Pierre the pigeon"></div><p id="sceneSpeech"></p></div><div id="sceneMath"></div><div class="scene-actions"><button id="sceneNext" onclick="sceneNext()">Pierre explains →</button><button class="secondary" onclick="closeLocation()">Back to map</button></div></div></div><header><div class="logo">Count<span>Lab</span> <small style="font-size:12px;font-weight:400">PARIS · 1654 → TODAY</small></div><nav>
+<button onclick="show('learn')">Explore Paris</button><button onclick="show('assessment')">Assessment</button><button onclick="show('feedback')">Guided Feedback</button><button onclick="show('history')">History</button><button id="globalSound" class="sound-control" onclick="toggleStorySound()">🔇 Sound off</button></nav></header>
+<main>
+<div class="hero paris-hero">
+<div class="hero-content"><div class="eyebrow">✦ A MATHEMATICAL JOURNEY THROUGH PARIS ✦</div>
+<h1>Chance has<br><em>a city.</em></h1>
+<p>Travel through Paris with <b>Pierre the Pigeon</b>. Discover how counting and probability work at famous landmarks, then test your knowledge and ask a real AI tutor for help.</p>
+<button class="gold-btn" onclick="show('learn')">Explore the city ✦</button> <button class="hero-ghost" onclick="show('assessment')">Take the exam →</button> <button class="hero-ghost" onclick="openStory()">Replay intro ✉</button>
+<div class="hero-foot">Inspired by the 1654 correspondence of Blaise Pascal and Pierre de Fermat, a landmark in the development of probability theory.</div></div>
+<div class="hero-art cinematic-art" aria-hidden="true"><img src="assets/intro-paris.jpg" alt=""></div></div>
+<div id="pigeon" class="pigeon" role="status" aria-live="polite"><div class="pigeon-figure"><svg viewBox="0 0 90 95" width="80"><ellipse cx="45" cy="57" rx="27" ry="29" fill="#dce2e9"/><ellipse cx="51" cy="50" rx="19" ry="25" fill="#aab8c9"/><circle cx="37" cy="25" r="19" fill="#e3e9f0"/><circle cx="31" cy="22" r="3" fill="#1f3347"/><path d="M18 29L4 34l15 6" fill="#dba254"/><path d="M40 82l-3 10m19-10l3 10" stroke="#a36b45" stroke-width="3"/><path d="M58 56l24 20-22-6" fill="#b6c2d2"/></svg></div><div class="pigeon-bubble"><b>Pierre the Pigeon</b><p id="pigeonLine">Bonjour! Pick a landmark to begin your journey.</p></div></div>
+<section id="learn" class="active"><div class="section-head"><div class="eyebrow dark">THE PARIS MATHEMATICS TRAIL</div><h2>Six stops. Six mathematical ideas.</h2><p class="sub">Tap a location on the illustrated city map. Each stop reveals a story, formula, and worked example.</p></div>
+<div class="paris-map card"><div class="map-title">PARIS <span>• An illustrated learning map — not to scale</span></div>
+<svg class="map-art" viewBox="0 0 900 460" role="img" aria-label="Illustrated map of Paris learning locations">
+<rect width="900" height="460" rx="20" fill="#f3e8d5"/>
+<path d="M-20 270C160 130 265 410 450 258S700 140 930 235" fill="none" stroke="#b5d6d8" stroke-width="70"/>
+<path d="M-20 270C160 130 265 410 450 258S700 140 930 235" fill="none" stroke="#d5ebea" stroke-width="48"/>
+<g stroke="#dbc9aa" stroke-width="8" opacity=".8" fill="none"><path d="M40 70L800 410M130 410L750 45M10 165L880 330M60 380L840 115M250 0L300 450M620 0L560 460"/></g>
+<g fill="#d2dcb9" opacity=".8"><ellipse cx="120" cy="135" rx="85" ry="55"/><ellipse cx="740" cy="360" rx="90" ry="55"/><ellipse cx="520" cy="65" rx="80" ry="30"/></g>
+<g stroke="#d1ae7e" stroke-width="4" fill="#f7eddc"><path d="M150 125l23-75 23 75m-40-40h34m-43 40h54"/><path d="M400 170h95v52h-95zM410 155h75l-36-23zM418 190h58"/><path d="M700 105h100v55H700zM712 85h75l-36-28z"/><path d="M235 335h85v54h-85zM245 318h65l-32-22z"/><path d="M530 320h80v55h-80zM540 300h60l-30-22z"/></g>
+<text x="330" y="300" font-size="23" font-family="Georgia" font-style="italic" fill="#6797a1" transform="rotate(-16 330 300)">La Seine</text>
+</svg>
+<div class="map-pins">
+<button class="pin pin1" onclick="visit(0)"><span>01</span> Eiffel Tower</button>
+<button class="pin pin2" onclick="visit(1)"><span>02</span> Louvre Museum</button>
+<button class="pin pin3" onclick="visit(2)"><span>03</span> Notre-Dame</button>
+<button class="pin pin4" onclick="visit(3)"><span>04</span> Luxembourg Gardens</button>
+<button class="pin pin5" onclick="visit(4)"><span>05</span> Montmartre</button>
+<button class="pin pin6" onclick="visit(5)"><span>06</span> Café de Paris</button>
+</div></div>
+<div id="stopDetail" class="card stop-detail"><div><h2>Choose a Paris stop</h2><p>Tap a location to meet a character, discover the general formula, and solve a real-world example with Pierre.</p></div></div>
+<div class="card history-note"><div class="eyebrow dark">A LITTLE HISTORY</div><h3>Pascal & Fermat, 1654</h3><p>Blaise Pascal and Pierre de Fermat exchanged letters about problems of chance in 17th-century France. Their work became a major foundation for modern probability theory. The Paris scenes in this learning trail are <b>invented educational examples</b>, not historical events.</p></div>
+<button onclick="show('assessment')">Ready? Take the Paris Challenge →</button></section>
+<section id="assessment"><h2>02 / Assessment</h2><p class="sub">10 questions in every attempt: 4 easy, 3 medium, 3 hard. Fresh numbers and shuffled choices each time.</p>
+<div id="quizStart" class="card"><h3>Ready for your next attempt?</h3><p>All questions are multiple-choice. You can review every answer after submitting.</p><label for="studentName">Name (optional, saved only on this browser)</label><input id="studentName" maxlength="40" placeholder="Your name"><p><button onclick="startQuiz()">Start a new quiz →</button></p></div>
+<div id="quizPlay" class="card hidden"><div id="quizMeta" class="tag"></div><div class="progress"><div class="bar" id="quizBar"></div></div><div id="questionVisual" style="font-size:38px;margin:8px 0" aria-hidden="true"></div><h3 id="questionText"></h3><div id="answers"></div><p><button id="nextBtn" onclick="nextQuestion()">Next question →</button></p></div>
+<div id="quizResult" class="hidden"><div class="card"><h2 id="scoreTitle"></h2><p id="scoreMessage"></p><button onclick="startQuiz()">Try a different quiz ↻</button> <button class="secondary" onclick="show('history')">View history</button></div><div class="card"><h3>Answer key & individual feedback</h3><div id="answerKey"></div></div></div>
+</section>
+<section id="feedback"><h2>03 / AI-supported guided feedback</h2><p class="sub">Explain your thinking on an open-response question or bring your own problem.</p>
+<div class="card"><div class="tag">Open-response challenge</div><h3>A fair coin is tossed 3 times. What is the probability of getting exactly 2 heads? Explain your reasoning.</h3><textarea id="openAnswer" placeholder="Explain how many outcomes there are, and which ones are favorable..."></textarea><p><button onclick="evaluateOpen()">Get guided feedback</button></p><div id="openFeedback" aria-live="polite"></div></div>
+<div class="card"><div class="tag">Bring your own problem</div><h3>Type a problem or upload its photo</h3><p class="small">Upload a photo (JPG, PNG or WebP). Gemini will read it and explain the mathematics. Avoid uploading personal information.</p>
+<textarea id="customProblem" placeholder="Example: In how many ways can I choose 3 people from a group of 8?"></textarea><p><input type="file" id="photo" accept="image/*" capture="environment" onchange="previewPhoto(event)"></p><img id="imagePreview" class="hidden" alt="Uploaded math problem preview">
+<p><button onclick="guideProblem()">Ask Groq to explain →</button></p><div id="customFeedback" aria-live="polite"></div></div>
+<div class="card"><h3>About this feedback</h3><p>This site connects to Groq through a protected Netlify Function. AI may make mistakes; verify its mathematical steps. Do not submit personal or sensitive information. Uploaded images are sent to Groq for processing, not saved by this site.</p></div></section>
+<section id="history"><h2>04 / Your quiz history</h2><p class="sub">Saved locally on this device and browser only; it will not sync across devices.</p><div class="card"><div id="historyList"></div><button class="outline" onclick="clearHistory()">Clear history</button></div></section>
+</main><footer>CountLab • Groq AI Math Tutor • Images and text are sent to Groq when you request AI feedback</footer>
+<script>
+const $=id=>document.getElementById(id);
+function show(id){document.querySelectorAll('section').forEach(x=>x.classList.toggle('active',x.id===id));window.scrollTo({top:0,behavior:'smooth'});if(id==='history')renderHistory()}
+function randint(a,b){return Math.floor(Math.random()*(b-a+1))+a}
+function shuffle(a){return [...a].sort(()=>Math.random()-.5)}
+function fact(n){let r=1;for(let i=2;i<=n;i++)r*=i;return r}
+function comb(n,r){return fact(n)/(fact(r)*fact(n-r))}
+function gcd(a,b){while(b)[a,b]=[b,a%b];return a}
+function frac(a,b){let g=gcd(a,b);return (a/g)+'/'+(b/g)}
+function make(q,correct,explain,level,options){let distractors=options.filter(x=>String(x)!==String(correct));let choices=shuffle([correct,...shuffle([...new Set(distractors.map(String))]).slice(0,3)]);return {q,correct:String(correct),explain,level,choices:choices.map(String)}}
+const bank={
+easy:[
+()=>{let a=randint(3,7),b=randint(2,6),v=a*b;return make(`A cafe offers ${a} drinks and ${b} sandwiches. How many drink-and-sandwich pairs are possible?`,v,`${a} × ${b} = ${v}. Multiply the number of choices at each stage.`,'Easy',[v+a,v+b,a+b,v-1,v+2])},
+()=>{let n=randint(3,6),v=fact(n);return make(`How many ways can ${n} distinct books be arranged in a row?`,v,`${n}! = ${v}. Every arrangement has a different order.`,'Easy',[n*n,v/n,v+n,v-1,v+10])},
+()=>{let n=randint(4,9),r=randint(1,n-1),v=frac(r,n);return make(`A bag contains ${r} red and ${n-r} blue marbles. What is P(red)?`,v,`${r} favorable marbles out of ${n} total gives ${v}.`,'Easy',[frac(n-r,n),frac(1,n),frac(r,n+1),frac(1,r+1),'1/2'])},
+()=>{let n=randint(3,6),v=2**n;return make(`A fair coin is tossed ${n} times. How many ordered outcomes are possible?`,v,`There are 2 choices per toss, so 2^${n} = ${v}.`,'Easy',[n*2,v/2,v+2,n*n,v-2])},
+()=>{let n=randint(4,8),v=n*(n-1);return make(`How many 2-letter codes can be made from ${n} distinct letters without repetition?`,v,`${n} × ${n-1} = ${v}. Order matters and repetition is not allowed.`,'Easy',[n*n,n+n-1,v/2,v+n,v-1])},
+()=>{let n=randint(4,9),v=frac(1,n);return make(`A fair spinner has ${n} equal sectors numbered 1 to ${n}. What is P(landing on 1)?`,v,`One favorable sector out of ${n}: ${v}.`,'Easy',[frac(2,n),frac(n-1,n),'1/2',frac(1,n+1),'1'])}
+],
+medium:[
+()=>{let n=randint(5,10),v=comb(n,2);return make(`How many ways can 2 students be chosen from a group of ${n}?`,v,`C(${n},2) = ${n} × ${n-1}/2 = ${v}. Order does not matter.`,'Medium',[n*(n-1),n*2,v+n,v-1,v+2])},
+()=>{let n=randint(5,9),v=n*(n-1);return make(`A class of ${n} students chooses a president and vice-president. How many outcomes?`,v,`${n} choices for president, then ${n-1} for vice-president: ${v}.`,'Medium',[comb(n,2),n*n,n+n-1,v+n,v-2])},
+()=>{let n=randint(5,9),v=comb(n,3);return make(`How many 3-person committees can be formed from ${n} students?`,v,`C(${n},3) = ${v}. Committee membership does not depend on order.`,'Medium',[n*(n-1),v*3,v+n,v-1,v+3])},
+()=>{let a=randint(2,5),b=randint(2,5),c=randint(2,5),v=a*b*c;return make(`A password has one symbol from each of three sets of sizes ${a}, ${b}, and ${c}. How many passwords?`,v,`${a} × ${b} × ${c} = ${v}.`,'Medium',[a+b+c,a*b+c,v+a,v-b,v+2])},
+()=>{let n=randint(4,8),v=frac(n-1,n);return make(`A fair spinner has ${n} equal sectors. What is P(not landing on sector 1)?`,v,`${n-1} of ${n} sectors are favorable: ${v}.`,'Medium',[frac(1,n),frac(n-2,n),'1/2','1',frac(1,n+1)])}
+],
+hard:[
+()=>{let n=randint(6,10),v=comb(n,3);return make(`From ${n} candidates, how many different groups of exactly 3 can be selected?`,v,`C(${n},3) = ${v}. Selection is unordered.`,'Hard',[n*(n-1)*(n-2),v*3,v+n,v-1,v+4])},
+()=>{let n=randint(5,8),v=n*(n-1)*(n-2);return make(`From ${n} finalists, how many ordered gold–silver–bronze results are possible?`,v,`P(${n},3) = ${n} × ${n-1} × ${n-2} = ${v}.`,'Hard',[comb(n,3),n*n,v/2,v+n,v-1])},
+()=>{let n=randint(4,7),v=frac(1,2**n);return make(`A fair coin is tossed ${n} times. What is P(all heads)?`,v,`Each independent head has probability 1/2; multiply ${n} times to get ${v}.`,'Hard',[frac(1,n),frac(1,2*n),'1/2',frac(2,2**n),frac(1,2**(n-1))])},
+()=>{let n=randint(5,8),v=frac(comb(n,2),2**n);return make(`A fair coin is tossed ${n} times. What is P(exactly 2 heads)?`,v,`There are C(${n},2) = ${comb(n,2)} favorable sequences among 2^${n} = ${2**n} equally likely sequences: ${v}.`,'Hard',[frac(2,n),frac(1,2**n),frac(n,2**n),'1/2',frac(comb(n,2)+1,2**n)])},
+()=>{let n=randint(5,8),v=n*(n-1)*(n-2);return make(`How many 3-digit codes can be made from ${n} distinct digits with no repetition? (A code may start with 0.)`,v,`${n} × ${n-1} × ${n-2} = ${v}. Codes can start with zero.`,'Hard',[comb(n,3),n**3,n*(n-1),v+n,v-2])}
+]};
+let quiz=[],position=0,answers=[];
+function startQuiz(){quiz=[...shuffle(bank.easy).slice(0,4),...shuffle(bank.medium).slice(0,3),...shuffle(bank.hard).slice(0,3)].map(f=>f());position=0;answers=[];$('quizStart').classList.add('hidden');$('quizResult').classList.add('hidden');$('quizPlay').classList.remove('hidden');show('assessment');renderQuestion()}
+function quizDiagram(q){if(/coin/i.test(q))return '<div class="math-diagram"><span class="coin-face">H</span><span class="coin-face tails">T</span><small>Two possible outcomes per toss</small></div>';if(/marble|bag|ball/i.test(q))return '<div class="math-diagram"><i class="marble red"></i><i class="marble blue"></i><i class="marble red"></i><i class="marble blue"></i><small>Count favorable and total outcomes</small></div>';if(/student|candidate|finalist/i.test(q))return '<div class="math-diagram"><span class="person-dot"></span><span class="person-dot"></span><span class="person-dot"></span><span class="person-dot"></span><small>Choose or arrange people</small></div>';return '<div class="math-diagram"><span class="diagram-num">n</span><span class="diagram-times">×</span><span class="diagram-num">k</span><small>Identify the counting rule</small></div>'}
+function renderQuestion(){let x=quiz[position];$('quizMeta').textContent=`Question ${position+1} of 10 · ${x.level}`;$('quizBar').style.width=`${position*10}%`;$('questionText').textContent=x.q;$('questionVisual').innerHTML=quizDiagram(x.q);$('answers').innerHTML=x.choices.map((a,i)=>`<label class="choice"><input type="radio" name="choice" value="${i}"> ${String.fromCharCode(65+i)}. ${a}</label>`).join('');$('nextBtn').textContent=position===9?'Submit assessment':'Next question →'}
+function nextQuestion(){let selected=document.querySelector('input[name="choice"]:checked');if(!selected){alert('Choose an answer to continue.');return}answers.push(quiz[position].choices[+selected.value]);position++;if(position<10)renderQuestion();else finishQuiz()}
+function finishQuiz(){let score=quiz.reduce((s,q,i)=>s+(q.correct===answers[i]?1:0),0);$('quizPlay').classList.add('hidden');$('quizResult').classList.remove('hidden');$('scoreTitle').textContent=`${score}/10 · ${score*10}%`;$('scoreMessage').textContent=score>=8?'Great work! Review the details to consolidate your understanding.':score>=5?'Good progress. Review the explanations and try another version.':'Keep practicing: revisit the formulas and work through the explanations.';$('answerKey').innerHTML=quiz.map((q,i)=>`<div class="review"><span class="tag">${i+1} · ${q.level}</span><p><b>${q.q}</b></p><p class="${answers[i]===q.correct?'good':'bad'}">Your answer: ${answers[i]} · ${answers[i]===q.correct?'Correct':'Not yet'}</p><p><b>Correct answer:</b> ${q.correct}</p><p>${q.explain}</p></div>`).join('');let record={date:new Date().toLocaleString(),name:$('studentName').value.trim()||'Student',score,questions:quiz.map((q,i)=>({q:q.q,correct:q.correct,given:answers[i],explain:q.explain}))};try{let h=JSON.parse(localStorage.getItem('countlabHistory')||'[]');h.unshift(record);localStorage.setItem('countlabHistory',JSON.stringify(h.slice(0,30)))}catch(e){}window.scrollTo({top:0,behavior:'smooth'})}
+function renderHistory(){let h=[];try{h=JSON.parse(localStorage.getItem('countlabHistory')||'[]')}catch(e){}$('historyList').innerHTML=h.length?h.map((r,i)=>`<details class="review"><summary><b>${r.score}/10</b> · ${escapeHTML(r.name)} · ${escapeHTML(r.date)}</summary>${r.questions.map((q,j)=>`<p><b>${j+1}. ${escapeHTML(q.q)}</b><br>Your answer: ${escapeHTML(q.given)} | Correct: ${escapeHTML(q.correct)}<br>${escapeHTML(q.explain)}</p>`).join('')}</details>`).join(''):'No attempts saved yet.'}
+function escapeHTML(s){return String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
+function clearHistory(){if(confirm('Delete saved attempts from this browser?')){localStorage.removeItem('countlabHistory');renderHistory()}}
+async function requestTutor(mode,text,output,image){
+ const area=$(output);area.innerHTML='<div class="review">Groq tutor is thinking…</div>';
+ try{
+  const response=await fetch('/.netlify/functions/tutor',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({mode,text,image})});
+  let data=await response.json().catch(()=>({error:'The server returned an unexpected response.'}));
+  if(!response.ok)throw new Error(data.error||`Server error ${response.status}`);
+  area.innerHTML='<div class="review"><div class="tag">GPT-OSS 120B feedback</div><div class="ai-answer">'+renderTutorText(data.answer)+'</div><p class="small">AI can make mistakes. Check each formula and result.</p></div>';
+  if(window.MathJax)await MathJax.typesetPromise([area]);
+ }catch(e){area.innerHTML='<div class="review bad">'+escapeHTML(e.message)+'<p class="small">Make sure you opened the deployed Netlify URL and configured GROQ_API_KEY.</p></div>'}
+}
+function renderTutorText(text){
+ let safe=escapeHTML(text);
+ safe=safe.replace(/^### (.*)$/gm,'<h3>$1</h3>').replace(/^## (.*)$/gm,'<h3>$1</h3>');
+ safe=safe.replace(/\*\*(.*?)\*\*/g,'<strong>$1</strong>');
+ return safe.split(/\n\s*\n/).map(t=>'<p>'+t.replace(/\n/g,'<br>')+'</p>').join('');
+}
+function evaluateOpen(){let t=$('openAnswer').value.trim();if(!t){$('openFeedback').textContent='Please write your answer first.';return}requestTutor('feedback','Question: A fair coin is tossed 3 times. What is the probability of getting exactly 2 heads? Explain your reasoning.\nStudent answer: '+t,'openFeedback',null)}
+let uploadedImage=null;
+async function previewPhoto(e){
+ let f=e.target.files?.[0];if(!f){uploadedImage=null;return}
+ if(!['image/jpeg','image/png','image/webp'].includes(f.type)){alert('Choose JPG, PNG or WebP.');e.target.value='';return}
+ if(f.size>12*1024*1024){alert('Please choose an image under 12 MB.');e.target.value='';return}
+ try{let url=URL.createObjectURL(f);let img=new Image();await new Promise((resolve,reject)=>{img.onload=resolve;img.onerror=reject;img.src=url});
+ let ratio=Math.min(1,1600/Math.max(img.width,img.height));let canvas=document.createElement('canvas');canvas.width=Math.round(img.width*ratio);canvas.height=Math.round(img.height*ratio);canvas.getContext('2d').drawImage(img,0,0,canvas.width,canvas.height);
+ uploadedImage=canvas.toDataURL('image/jpeg',.8);$('imagePreview').src=uploadedImage;$('imagePreview').classList.remove('hidden');URL.revokeObjectURL(url)
+ }catch(err){uploadedImage=null;alert('Unable to process this image. Try another JPG or PNG.')}
+}
+function guideProblem(){let t=$('customProblem').value.trim();if(!t&&!uploadedImage){$('customFeedback').textContent='Please type a problem or upload a photo.';return}requestTutor('solve',t,'customFeedback',uploadedImage)}
+
+
+const stops=[
+{place:'Eiffel Tower',topic:'Multiplication Principle',person:'Souvenir seller',dialog:'A visitor wants one postcard and one envelope. We have 4 postcard designs and 3 envelope colors!',problem:'How many different gift sets can we make?',general:'\\(N=n_1\\times n_2\\)',meaning:'Multiply the choices at each stage.',sub:'\\(N=4\\times3=12\\)',answer:'12 possible gift sets',steps:'Each of the 4 postcards can be paired with each of the 3 envelopes.',theme:'tower',colors:['#e1f5f5','#b8dfe0'],objects:['POSTCARDS','ENVELOPES'],nums:['4 designs','3 colors']},
+{place:'Louvre Museum',topic:'Combinations',person:'Museum curator',dialog:'Our gallery has 7 paintings, but the student exhibition can display only 3.',problem:'How many different groups of 3 paintings are possible?',general:'\\(C(n,k)=\\frac{n!}{k!(n-k)!}\\)',meaning:'Use combinations when order does not matter.',sub:'\\(C(7,3)=\\frac{7!}{3!4!}=35\\)',answer:'35 possible selections',steps:'Choosing the same three paintings in a different order does not create a new selection.',theme:'museum',colors:['#f0e8fb','#ddd2f3'],objects:['PAINTINGS','SELECTED'],nums:['7 total','3 chosen']},
+{place:'Notre-Dame',topic:'Permutations',person:'Tour coordinator',dialog:'Five volunteers are ready. We need a guide, a photographer, and a presenter.',problem:'How many ways can we assign these three different roles?',general:'\\(P(n,r)=\\frac{n!}{(n-r)!}\\)',meaning:'Use permutations when order or roles matter.',sub:'\\(P(5,3)=5\\times4\\times3=60\\)',answer:'60 possible assignments',steps:'There are 5 choices for the guide, 4 for the photographer, and 3 for the presenter.',theme:'cathedral',colors:['#fff1e5','#f3d6c3'],objects:['VOLUNTEERS','ROLES'],nums:['5 people','3 roles']},
+{place:'Luxembourg Gardens',topic:'Classical Probability',person:'Park game host',dialog:'There are 5 green tokens and 3 gold tokens in this bag. Pick one without looking!',problem:'What is the probability of drawing a gold token?',general:'\\(P(A)=\\frac{n(A)}{n(S)}\\)',meaning:'Divide favorable outcomes by all equally likely outcomes.',sub:'\\(P(\\text{gold})=\\frac{3}{8}\\)',answer:'3/8 probability',steps:'There are 3 favorable gold tokens and 8 tokens altogether.',theme:'garden',colors:['#e4f6e8','#c2e8d0'],objects:['GREEN','GOLD'],nums:['5 tokens','3 tokens']},
+{place:'Montmartre',topic:'Factorials',person:'Street artist',dialog:'I have 5 different sketches and want to hang all of them in one row.',problem:'How many different display orders can I make?',general:'\\(n!=n(n-1)(n-2)\\cdots1\\)',meaning:'Use a factorial to arrange all distinct items.',sub:'\\(5!=5\\times4\\times3\\times2\\times1=120\\)',answer:'120 display orders',steps:'Choose one of 5 sketches first, then one of 4, then 3, 2, and 1.',theme:'art',colors:['#fff1ee','#f6d7d0'],objects:['SKETCHES','POSITIONS'],nums:['5 sketches','5 places']},
+{place:'Café de Paris',topic:'Multiplication Principle',person:'Café customer',dialog:'I would like a drink and a pastry! The menu has 3 drinks and 4 pastries.',problem:'How many different drink-and-pastry orders are possible?',general:'\\(N=n_1\\times n_2\\)',meaning:'For each drink, there are four possible pastry choices.',sub:'\\(N=3\\times4=12\\)',answer:'12 different orders',steps:'Every one of the 3 drinks can be paired with any of the 4 pastries. The choices are combined using the multiplication principle.',theme:'cafe',colors:['#fff2e3','#f7d9bb'],objects:['DRINKS','PASTRIES'],nums:['3 drinks','4 pastries']}
+];
+function pigeonSay(message){const e=document.getElementById('pigeonLine');if(e)e.textContent=message}
+function mathRefresh(el){if(window.MathJax?.typesetPromise)window.MathJax.typesetPromise(el?[el]:undefined).catch(()=>{})}
+let currentStop=0,sceneStage=0,storyAudio=null,storySound=false;
+function audioNote(kind='chime'){
+ if(!storySound)return;
+ try{storyAudio=storyAudio||new(window.AudioContext||window.webkitAudioContext)();if(storyAudio.state==='suspended')storyAudio.resume();const notes=kind==='travel'?[390,320,260]:kind==='success'?[523,659,784]:[392,494,587];notes.forEach((hz,i)=>{let t=storyAudio.currentTime+i*.13,o=storyAudio.createOscillator(),g=storyAudio.createGain();o.type='sine';o.frequency.setValueAtTime(hz,t);g.gain.setValueAtTime(.0001,t);g.gain.exponentialRampToValueAtTime(.055,t+.025);g.gain.exponentialRampToValueAtTime(.0001,t+.25);o.connect(g).connect(storyAudio.destination);o.start(t);o.stop(t+.26)})}catch(e){}
+}
+function playStoryChime(){audioNote('chime')}
+function toggleStorySound(){storySound=!storySound;let b=document.getElementById('soundToggle');if(b){b.textContent=storySound?'♫ Sound: on':'♪ Sound: off';b.setAttribute('aria-pressed',String(storySound))}let h=document.getElementById('globalSound');if(h)h.textContent=storySound?'🔊 Sound on':'🔇 Sound off';if(storySound)audioNote('success')}
+function openStory(){const o=document.getElementById('storyOverlay');o.hidden=false;o.classList.remove('playing');void o.offsetWidth;o.classList.add('playing');document.getElementById('storyEnter').focus();playStoryChime()}
+function closeStory(){document.getElementById('storyOverlay').hidden=true;try{sessionStorage.setItem('countlabStorySeen','yes')}catch(e){}document.querySelector('.gold-btn')?.focus()}
+function landmarkArt(x){const pic=x.theme==='cafe'?'cafe-scene.jpg':x.theme==='museum'?'louvre-scene.jpg':'paris-map.jpg';return `<div class="cinematic-scene ${x.theme}"><img src="assets/${pic}" alt="Illustrated Paris scene for ${escapeHTML(x.place)}"><div class="scene-veil"></div><div class="scene-character"><img src="assets/pierre.jpg" alt="Pierre the pigeon"></div><span class="scene-place">${escapeHTML(x.place)}</span></div>`}
+function visit(i){currentStop=i;sceneStage=0;const x=stops[i];document.querySelectorAll('.pin').forEach((p,j)=>p.classList.toggle('selected',i===j));let detail=document.getElementById('stopDetail');detail.innerHTML=`<div><div class="eyebrow dark">STOP ${String(i+1).padStart(2,'0')} · ${x.place}</div><h2>${x.topic}</h2><p>${x.problem}</p><div class="general-formula">${x.general}</div><p class="small">${x.meaning}</p></div><div class="worked"><b>Worked example</b><div class="general-formula">${x.sub}</div><p>${x.answer}</p><button class="secondary" onclick="openLocation(${i})">▶ Watch the story again</button></div>`;mathRefresh(detail);openLocation(i)}
+function openLocation(i){currentStop=i;sceneStage=0;let x=stops[i],o=document.getElementById('locationOverlay');document.getElementById('sceneHeading').textContent=x.place+' · '+x.topic;document.getElementById('sceneArt').innerHTML=landmarkArt(x);document.getElementById('sceneSpeech').textContent=x.person+': “'+x.dialog+'”';document.getElementById('sceneMath').innerHTML='';document.getElementById('sceneNext').textContent='Pierre explains →';o.hidden=false;o.classList.remove('arrive');void o.offsetWidth;o.classList.add('arrive');audioNote('travel');pigeonSay('Welcome to '+x.place+'!')}
+function sceneNext(){let x=stops[currentStop],e=document.getElementById('sceneMath');if(sceneStage===0){sceneStage=1;document.getElementById('sceneSpeech').textContent='Pierre: “'+x.problem+' First, let us learn the general formula!”';e.innerHTML=`<div class="lesson-step"><div class="lesson-kicker">1 · GENERAL FORMULA</div><div class="general-formula">${x.general}</div><p>${x.meaning}</p><div class="lesson-kicker">2 · SUBSTITUTE THE NUMBERS</div><div class="general-formula">${x.sub}</div><p>${x.steps}</p><div class="lesson-answer">✓ ${x.answer}</div></div>`;document.getElementById('sceneNext').textContent='Finish this stop →';mathRefresh(e);audioNote('success');pigeonSay(x.meaning)}else{closeLocation();document.getElementById('stopDetail').scrollIntoView({behavior:'smooth',block:'center'})}}
+function closeLocation(){document.getElementById('locationOverlay').hidden=true}
+const originalShow=show;show=function(id){originalShow(id);pigeonSay({learn:'Choose a landmark to begin your journey.',assessment:'Good luck! Try each question carefully.',feedback:'Ask a question or upload a photo for AI help.',history:'See how far you have come!'}[id]||'Bonjour!')};
+const originalFinish=finishQuiz;finishQuiz=function(){originalFinish();const sc=quiz.reduce((t,q,i)=>t+(q.correct===answers[i]?1:0),0);pigeonSay(sc>=8?'Magnifique! '+sc+'/10!':sc>=5?'Bien joué! '+sc+'/10. Review the formulas.':'Keep going! Use each explanation to improve.');audioNote(sc>=5?'success':'chime');enhanceAnswerKey()};
+function enhanceAnswerKey(){let key=document.getElementById('answerKey');if(!key)return;key.innerHTML=quiz.map((q,i)=>{let good=answers[i]===q.correct;return `<article class="result-card ${good?'right':'wrong'}"><div class="result-top"><span>QUESTION ${i+1} · ${q.level.toUpperCase()}</span><span>${good?'✓ Correct':'↻ Review'}</span></div><h3>${escapeHTML(q.q)}</h3><div class="result-grid"><div><small>YOUR ANSWER</small><strong>${escapeHTML(String(answers[i]??'Not answered'))}</strong></div><div><small>CORRECT ANSWER</small><strong>${escapeHTML(String(q.correct))}</strong></div></div><div class="result-explanation"><b>Pierre explains</b><p>${escapeHTML(q.explain)}</p></div></article>`}).join('');}
+try{if(sessionStorage.getItem('countlabStorySeen')==='yes')document.getElementById('storyOverlay').hidden=true}catch(e){}
+</script></body></html>
